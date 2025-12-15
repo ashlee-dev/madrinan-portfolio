@@ -1,0 +1,663 @@
+/* --- 1. GLOBAL LIGHT MODE VARIABLES & RESET --- */
+:root {
+    /* LIGHT MODE (Soft Rose/Dusty Pink - Now with comfortable background) */
+    --primary: #a8798e; 
+    --secondary: #e6c8d6; 
+    --bg-main: #f5f5f5; 
+    --bg-card: #fff;
+    --text-color: #2c2c2c; 
+    --text-light: #5e5e5e; 
+    --hero-text: #fff;
+    --shadow-color: rgba(168, 121, 142, 0.1);
+    --shadow-hover: rgba(168, 121, 142, 0.3);
+
+    /* Transition for smooth color change */
+    transition: background-color 0.5s, color 0.5s;
+}
+
+/* --- DARK MODE VARIABLES --- */
+.dark-mode {
+    --primary: #c99fb1; /* Brighter Rose for contrast on dark bg */
+    --secondary: #58444f; /* Darker accent */
+    --bg-main: #1f1f1f; /* Dark Background */
+    --bg-card: #2c2c2c; /* Dark Card Background */
+    --text-color: #f0f0f0; /* Light Text */
+    --text-light: #b0b0b0; /* Muted Light Text */
+    --hero-text: #fff;
+    --shadow-color: rgba(201, 159, 177, 0.1);
+    --shadow-hover: rgba(201, 159, 177, 0.3);
+}
+
+/* --- BASE STYLES USING VARIABLES --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* Apply transition to all elements for smooth dark mode switch */
+    transition: background-color 0.5s, color 0.5s, border-color 0.5s;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color); 
+    background-color: var(--bg-main); 
+    cursor: none; 
+    padding-top: 60px; /* Space for fixed navigation bar */
+}
+
+/* --- NAVIGATION BAR STYLES --- */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: var(--bg-card);
+    box-shadow: 0 2px 8px var(--shadow-color);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-brand {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 15px;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.3s, color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+}
+
+.nav-links a i {
+    margin-right: 5px;
+}
+
+/* --- 2. CUSTOM CURSOR STYLES --- */
+
+.cursor-dot, .cursor-outline {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    z-index: 9999;
+    transform: translate(calc(-50% + 5px), calc(-50% + 5px));
+    transition: transform 0.1s ease-out;
+}
+
+.cursor-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary); 
+    transition: transform 0.1s ease-out;
+}
+
+.cursor-outline {
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary); 
+    transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* --- 3. LAYOUT & GENERAL STYLES --- */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex; 
+    flex-direction: column;
+    gap: 30px; 
+}
+
+/* Mode Toggle Button Styling */
+#mode-toggle {
+    background: var(--secondary);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s, color 0.3s;
+}
+#mode-toggle:hover {
+    background: var(--primary);
+    color: var(--hero-text);
+}
+#mode-toggle i {
+    margin-right: 5px;
+}
+@media (max-width: 768px) {
+    #mode-toggle span {
+        display: none;
+    }
+}
+
+
+/* Header/Hero Section - FINAL VERSION WITH BACKGROUND IMAGE */
+.hero {
+    background-color: var(--primary); /* Fallback color */
+    /* FIX 1: Corrected path capitalization 'Images' to 'images' (lowercase is safest for Vercel/Linux servers) */
+    /* FIX 2: Added missing semicolon after the URL definition */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('images/hero_main_photo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 300px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    color: var(--hero-text); 
+    padding: 50px 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Styling for text over background image */
+.hero h1 {
+    font-size: 3em;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+.hero p {
+    font-size: 1.2em;
+    font-weight: 400;
+    margin-top: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); 
+}
+
+/* --- SECTION TITLE STYLING --- */
+.section-title {
+    background-color: var(--primary);
+    color: var(--hero-text); 
+    padding: 10px 20px;
+    margin: 20px 0 10px 0; 
+    border-radius: 8px;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: calc(100% - 40px); 
+    align-self: center;
+}
+.section-title i {
+    margin-right: 8px;
+}
+
+
+/* Card Styling */
+.card {
+    background: var(--bg-card); 
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px var(--shadow-color); 
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.5s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px var(--shadow-hover); 
+}
+
+.card h2 {
+    color: var(--primary); 
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--secondary); 
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+.card i {
+    margin-right: 10px;
+}
+
+/* A. COMBINED SECTION STYLES (About Me & Certifications) */
+
+#about-and-certs {
+    padding: 40px;
+}
+
+.profile-info-container {
+    display: flex;
+    gap: 30px;
+}
+
+.about-me-column {
+    flex: 1; 
+}
+
+/* JUSTIFY TEXT IN ABOUT ME PARAGRAPHS */
+.about-me-column p {
+    text-align: justify;
+}
+
+.certification-column {
+    flex: 2; 
+}
+
+.profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 10px auto 20px auto;
+    border: 4px solid var(--secondary); 
+    display: block; 
+}
+
+/* Certification Grid */
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px;
+    justify-content: space-around;
+    text-align: center;
+}
+.cert-item {
+    padding: 15px;
+    border: 1px dashed var(--secondary); 
+    border-radius: 10px;
+}
+.cert-item i {
+    font-size: 2.5rem;
+    color: var(--primary); 
+    margin-bottom: 10px;
+}
+.cert-item h3 {
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.cert-item p {
+    font-size: 0.9em;
+    color: var(--text-light); 
+}
+
+.cert-note {
+    margin-top: 20px;
+    padding: 10px;
+    background: var(--secondary); 
+    opacity: 0.5; 
+    border-left: 3px solid var(--primary); 
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+
+/* B. REFLECTION SECTION STYLES */
+
+.reflection-item {
+    margin-bottom: 25px;
+    padding: 15px;
+    border-left: 4px solid var(--secondary); 
+    background-color: var(--bg-card); 
+    border-radius: 5px;
+}
+
+.reflection-item h3 {
+    color: var(--primary); 
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.reflection-item h4 {
+    color: var(--text-color); 
+    margin-top: 10px;
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.reflection-item ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-top: 10px;
+}
+
+.reflection-item li {
+    margin-bottom: 5px;
+    font-size: 0.95em;
+    color: var(--text-light); 
+}
+
+.company-detail {
+    font-style: italic;
+    font-size: 0.85em;
+    color: var(--primary); 
+    margin-bottom: 10px;
+}
+
+/* C. TOUR & GALLERY STYLES */
+
+/* Tour Schedule Styling */
+.day-schedule h3 {
+    color: var(--text-color); 
+    background-color: var(--secondary); 
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+.itinerary-detail {
+    font-style: italic;
+    margin-bottom: 15px;
+    color: var(--text-light); 
+}
+
+/* Added for improved contrast in itinerary */
+.reflection-snippet {
+    margin-top: -15px;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+    font-style: italic;
+    color: var(--primary); 
+    padding-left: 10px;
+    border-left: 2px solid var(--secondary); 
+}
+
+.schedule-photo {
+    margin-bottom: 30px;
+}
+.schedule-photo img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+    box-shadow: 0 4px 10px var(--shadow-color); 
+}
+.schedule-photo p {
+    text-align: center;
+    margin-top: 5px;
+    font-size: 0.9em;
+    font-weight: 600;
+    color: var(--primary); 
+}
+
+/* Gallery Grid Styling */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+.gallery-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 4px 10px var(--shadow-color); 
+    cursor: pointer; /* Added for lightbox indication */
+}
+.gallery-grid img:hover {
+    transform: scale(1.05);
+    opacity: 0.85;
+}
+
+.directory-note {
+    margin-top: 30px;
+    padding: 15px;
+    background: var(--secondary); 
+    opacity: 0.5;
+    border-left: 5px solid var(--primary); 
+    border-radius: 5px;
+    font-style: italic;
+}
+
+
+/* --- CONTACT SECTION STYLES --- */
+#contact {
+    text-align: center;
+}
+#contact h2 {
+    margin-bottom: 30px;
+}
+.contact-details {
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px 40px;
+}
+.contact-details p {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--primary);
+}
+.contact-details i {
+    color: var(--primary);
+    margin-right: 10px;
+}
+
+.contact-form-placeholder form {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form-placeholder input[type="text"],
+.contact-form-placeholder input[type="email"],
+.contact-form-placeholder textarea {
+    padding: 12px 15px;
+    border: 1px solid var(--secondary);
+    border-radius: 8px;
+    font-family: inherit;
+    color: var(--text-color);
+    background-color: var(--bg-main);
+}
+
+.contact-form-placeholder textarea {
+    resize: vertical;
+}
+
+.submit-button {
+    background-color: var(--primary);
+    color: var(--hero-text);
+    border: none;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: var(--primary);
+    opacity: 0.9;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary); 
+    color: var(--hero-text); 
+    margin-top: 50px;
+}
+
+
+/* --- 4. REACTIVENESS (Media Queries) --- */
+
+@media (min-width: 900px) {
+    /* Desktop optimization */
+    .profile-info-container {
+        flex-direction: row;
+        text-align: left;
+    }
+    .about-me-column {
+        padding-right: 20px;
+        border-right: 1px dashed var(--secondary); 
+    }
+    .profile-img {
+        margin-left: 0; 
+    }
+}
+
+@media (max-width: 992px) {
+    /* Tablet navigation adjustments */
+    .nav-links a {
+        margin: 0 8px;
+        font-size: 0.9em;
+    }
+    .nav-brand {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 899px) {
+    /* Tablet and smaller phone screens (Stacking) */
+    .profile-info-container {
+        flex-direction: column;
+    }
+    .cert-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-me-column {
+        padding-bottom: 20px;
+        margin-bottom: 20px;
+        border-bottom: 1px dashed var(--secondary); 
+        border-right: none;
+    }
+    .profile-img {
+        float: none;
+        margin: 10px auto 20px auto; 
+    }
+    /* Adjust width of section title on small screens */
+    .section-title {
+        width: calc(100% - 20px); 
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobile navigation adjustments */
+    #navbar {
+        flex-wrap: wrap;
+        height: auto;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .nav-brand {
+        order: 1;
+    }
+    #mode-toggle {
+        order: 3;
+    }
+    .nav-links {
+        order: 2;
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .nav-links a {
+        margin: 0 5px;
+        font-size: 0.8em;
+    }
+    body {
+        padding-top: 100px; /* Increased space for wrapped nav bar */
+    }
+}
+
+/* --- 5. LIGHTBOX/MODAL STYLES --- */
+
+.lightbox {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 2000; /* Sit on top of everything */
+    padding-top: 60px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.9); /* Black w/ opacity */
+    cursor: default;
+    transition: background-color 0.3s; 
+}
+
+/* Lightbox Content (The Image) */
+.lightbox-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    max-height: 85vh; 
+    object-fit: contain; 
+    border-radius: 10px;
+}
+
+/* Caption of Modal Image */
+.lightbox-caption {
+    margin: 15px auto;
+    display: block;
+    width: 80%;
+    max-width: 900px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    font-size: 1.2em;
+}
+
+/* The Close Button */
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: var(--primary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Modal Animation */
+.lightbox-content, #lightbox-caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* Dark Mode adjustment for the close button/caption */
+.dark-mode .lightbox {
+    background-color: rgba(0, 0, 0, 0.95);
+}
+.dark-mode .close-btn:hover {
+    color: var(--primary);
+}
