@@ -200,7 +200,14 @@ body {
 .section-title i {
     margin-right: 8px;
 }
+.form-instruction {
+    /* This is the line that moves the text to the left */
+    text-align: left; 
 
+    /* You might also want to set a margin for spacing */
+    margin-left: 0;
+    margin-right: auto;
+}
 
 /* Card Styling */
 .card {
