@@ -13,22 +13,39 @@
     <div class="cursor-outline"></div>
 
     <nav id="navbar">
-        <div class="nav-brand">ashriri.</div>
-        <div class="nav-links">
-            <a href="#about"><i class="fas fa-user-circle"></i>About<a>
-            <a href="#reflection"><i class="fas fa-lightbulb"></i> Reflections</a>
-            <a href="#gallery"><i class="fas fa-camera"></i> Photos</a>
-            <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    <div class="nav-brand">ashriri.</div>
+    <div class="nav-links">
+        <a href="#about"><i class="fas fa-user-circle"></i> About</a>
+        <a href="#tech-stack"><i class="fas fa-layer-group"></i> Tech Stack</a>
+        <a href="#projects"><i class="fas fa-code"></i> Projects</a>
+        <a href="#reflection"><i class="fas fa-lightbulb"></i> Reflections</a>
+        <a href="#gallery"><i class="fas fa-camera"></i> Photos</a>
+        <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
+    </div>
+    <button id="mode-toggle" aria-label="Toggle Dark/Light Mode">
+        <i class="fas fa-moon"></i> <span>Dark Mode</span>
+    </button>
+</nav>
+
+<header class="hero landing-page">
+    <div class="hero-content">
+        <h1>Hi, I’m <span class="highlight">Ashlee Madriñan</span></h1>
+        <h2>3rd Year IT Student</h2>
+        <p>
+            I design user-centered interfaces and build structured database solutions,
+            with foundational knowledge in cybersecurity and real-world IT exposure.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="#projects" class="btn primary">
+                <i class="fas fa-code"></i> View Projects
+            </a>
+            <a href="#contact" class="btn secondary">
+                <i class="fas fa-envelope"></i> Contact Me
+            </a>
         </div>
-        <button id="mode-toggle" aria-label="Toggle Dark/Light Mode">
-            <i class="fas fa-moon"></i> <span>Dark Mode</span>
-        </button>
-    </nav>
-    
-    <header class="hero">
-        <h1>Ashlee's Educational Tour Portfolio</h1>
-        <p>3rd Year IT Student | UI/UX & Database Enthusiast</p>
-    </header>
+    </div>
+</header>
 
     <main class="container">
         
@@ -82,6 +99,172 @@
                 </div>
             </div>
         </section>
+        <h3 class="section-title"><i class="fas fa-layer-group"></i> Tech Stack</h3>
+<section id="tech-stack" class="card">
+    <h2><i class="fas fa-tools"></i> Technologies & Tools</h2>
+
+    <div class="tech-grid">
+        <div class="tech-item">
+            <i class="fab fa-html5"></i>
+            <h4>HTML5</h4>
+            <p>Semantic structure and accessible web layouts</p>
+        </div>
+
+        <div class="tech-item">
+            <i class="fab fa-css3-alt"></i>
+            <h4>CSS3</h4>
+            <p>Responsive layouts, animations, and UI styling</p>
+        </div>
+
+        <div class="tech-item">
+            <i class="fab fa-js"></i>
+            <h4>JavaScript</h4>
+            <p>Interactivity, DOM manipulation, and UI behavior</p>
+        </div>
+
+        <div class="tech-item">
+            <i class="fas fa-database"></i>
+            <h4>MySQL</h4>
+            <p>Database design, queries, and data management</p>
+        </div>
+
+        <div class="tech-item">
+            <i class="fas fa-database"></i>
+            <h4>PostgreSQL</h4>
+            <p>Relational database concepts and normalization</p>
+        </div>
+
+        <div class="tech-item">
+            <i class="fas fa-shield-alt"></i>
+            <h4>Cybersecurity</h4>
+            <p>Basic security concepts, threats, and prevention</p>
+        </div>
+
+        <div class="tech-item">
+            <i class="fab fa-git-alt"></i>
+            <h4>Git & GitHub</h4>
+            <p>Version control and project collaboration</p>
+        </div>
+
+        <div class="tech-item">
+            <i class="fas fa-pencil-ruler"></i>
+            <h4>UI/UX Design</h4>
+            <p>User-centered design principles and usability</p>
+        </div>
+    </div>
+</section>
+
+<h3 class="section-title"><i class="fas fa-code"></i> Projects</h3>
+<section id="projects" class="card">
+    <h2><i class="fas fa-laptop-code"></i> Academic & Collaborative Projects</h2>
+
+    <div class="projects-grid">
+
+        <!-- PROJECT 1 -->
+        <div class="project-item">
+            <img src="Images/projects/project_1.png" 
+                 alt="HCI Progress UI Design Preview" 
+                 class="project-img">
+
+            <h3>HCI Progress Website</h3>
+            <p><strong>Tech:</strong> UI/UX Design, Web Design (Wix)</p>
+            <p>
+                A solo Human-Computer Interaction project documenting
+                usability principles, interface flow, and iterative design.
+            </p>
+            <p class="project-role">
+                <strong>My Role:</strong> UI/UX Designer (layout, visual hierarchy, usability)
+            </p>
+
+            <a href="https://ashleemadrinan.wixsite.com/hci-progress"
+               target="_blank"
+               class="project-link">
+                <i class="fas fa-external-link-alt"></i> View Project
+            </a>
+        </div>
+
+        <!-- PROJECT 2 -->
+        <div class="project-item">
+            <img src="Images/projects/project_2.png" 
+                 alt="Zephyr Gym UI Design Preview" 
+                 class="project-img">
+
+            <h3>Zephyr Gym Website</h3>
+            <p><strong>Tech:</strong> UI/UX Design, Web Layout (Wix)</p>
+            <p>
+                A solo fitness website concept focused on branding,
+                navigation clarity, and user engagement.
+            </p>
+            <p class="project-role">
+                <strong>My Role:</strong> UI/UX Designer (wireframing, color scheme, layout)
+            </p>
+
+            <a href="https://ashleemadrinan.wixsite.com/zephyrgym"
+               target="_blank"
+               class="project-link">
+                <i class="fas fa-external-link-alt"></i> View Project
+            </a>
+        </div>
+
+        <!-- PROJECT 3 -->
+        <div class="project-item">
+            <img src="Images/projects/project_3.png" 
+                 alt="Personal Website Preview" 
+                 class="project-img">
+
+            <h3>A Simple Site</h3>
+            <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+            <p>
+                A responsive personal website.
+            </p>
+            <p class="project-role">
+                <strong>My Role:</strong> UI/UX Designer & Frontend Developer
+            </p>
+
+            <a href="https://madrinan6-lr1z3inzj-ashlee-devs-projects.vercel.app/"
+               target="_blank"
+               class="project-link">
+                <i class="fas fa-external-link-alt"></i> View Live Site
+            </a>
+        </div>
+
+    </div>
+    <div class="projects-grid">
+    <p class="directory-note">
+        These projects highlight my contributions in UI/UX design, collaboration,
+        and frontend web development.
+    </p>
+     </a>
+        </div>
+    <!-- PROJECT 4 -->
+        <div class="project-item">
+            <img src="Images/projects/collab.png" 
+                    alt="Collaborative Website Preview" 
+                    class="project-img">
+
+            <h3>A Collaborative Site</h3>
+            <p><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+            <p>
+                A responsive Collaborative website.
+            </p>
+            <p class="project-role">
+                <strong>My Role:</strong> UI/UX Designer & Frontend Developer
+            </p>
+
+            <a href="https://im-payroll-system.onrender.com/"
+               target="_blank"
+               class="project-link">
+                <i class="fas fa-external-link-alt"></i> View Live Site
+            </a>
+        </div>
+
+    </div>
+
+    <p class="directory-note">
+        These projects highlight my contributions in UI/UX design, collaboration,
+        and frontend web development.
+     </p>
+</section>
 
         <h3 class="section-title"><i class="fas fa-brain"></i> Educational Learnings</h3>
         <section id="reflection" class="card">
