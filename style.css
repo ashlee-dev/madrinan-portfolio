@@ -154,7 +154,7 @@ body {
 .hero {
     /* FIX 1: Corrected path capitalization 'Images' to 'images' (lowercase is safest for Vercel/Linux servers) */
     /* FIX 2: Added missing semicolon after the URL definition */
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/Images/header.png'); 
+    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('/Images/header.jpg'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
